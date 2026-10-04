@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KPD Enterprises | Architecture, Luxury Villas & Interior Design</title>
+  <style>
+    :root {
+      --primary: #111827;
+      --accent: #c59b27; /* Luxury Gold Accent */
+      --accent-hover: #a17d1b;
+      --light-bg: #fdfdfd;
+      --text: #4b5563;
+      --heading: #1f2937;
+      --card-bg: #ffffff;
+      --border: #f3f4f6;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--light-bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e5e7eb;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    nav a {
+      margin-left: 1.8rem;
+      text-decoration: none;
+      color: var(--heading);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(17, 24, 39, 0.85), rgba(17, 24, 39, 0.85)),
+                  radial-gradient(circle, #374151 10%, #111827 90%);
+      color: #ffffff;
+      padding: 6rem 1.5rem;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      line-height: 1.2;
+      color: #f9fafb;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #d1d5db;
+      margin-bottom: 2.2rem;
+      font-weight: 300;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #ffffff;
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Common Section */
+    section {
+      padding: 5rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      color: var(--heading);
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.5px;
+    }
+
+    .section-title p {
+      color: #6b7280;
+      max-width: 620px;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+
+    /* Cards Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 2.2rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px -4px rgba(0, 0, 0, 0.08);
+      border-color: var(--accent);
+    }
+
+    .card .icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      color: var(--heading);
+      margin-bottom: 0.8rem;
+    }
+
+    .card p {
+      color: #6b7280;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Projects / Highlights */
+    .stats-bar {
+      background: #111827;
+      color: white;
+      padding: 3rem 1.5rem;
+      text-align: center;
+      border-radius: 8px;
+      margin: 2rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .stat-item h4 {
+      font-size: 2.2rem;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-item p {
+      color: #9ca3af;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Contact Section */
+    .contact-container {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.2rem;
+      color: var(--heading);
+    }
+
+    .contact-info p {
+      margin-bottom: 0.8rem;
+      color: #4b5563;
+    }
+
+    .contact-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      padding: 0.85rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      background: #fafafa;
+      outline: none;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus {
+      border-color: var(--accent);
+      background: #ffffff;
+    }
+
+    /* Footer */
+    footer {
+      background: #111827;
+      color: #9ca3af;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: 0.9rem;
+      border-top: 1px solid #1f2937;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .contact-container { grid-template-columns: 1fr; padding: 1.5rem; }
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand">KPD <span>Enterprises</span></a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Crafting Luxury <span>Villas, Apartments</span> & Bespoke Interiors</h1>
+      <p>Transforming architectural concepts into living masterworks. Complete architectural design, 3D elevations, and premium turn-key interior spaces.</p>
+      <a href="#contact" class="btn">Book Free Consultation</a>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;">
+    <div class="stats-bar">
+      <div class="stat-item">
+        <h4>100%</h4>
+        <p>Bespoke Designs</p>
+      </div>
+      <div class="stat-item">
+        <h4>End-to-End</h4>
+        <p>Project Execution</p>
+      </div>
+      <div class="stat-item">
+        <h4>3D Visualization</h4>
+        <p>Photorealistic Renders</p>
+      </div>
+      <div class="stat-item">
+        <h4>Vastu</h4>
+        <p>Compliant Layouts</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="section-title">
+      <h2>About KPD Enterprises</h2>
+      <p>Delivering modern lifestyle spaces through meticulous architectural planning and luxurious interior craftsmanship.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🏡</div>
+        <h3>Luxury Villa Architecture</h3>
+        <p>Custom contemporary and traditional villa designs optimized for natural light, ventilation, and functional luxury living.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🏢</div>
+        <h3>Apartment Planning</h3>
+        <p>Smart floor plans, duplex apartments, and gated community master layouts designed for maximum space utilization and privacy.</p>
+      </div>
+      <div class="card">
+        <div class="icon">✨</div>
+        <h3>Bespoke Interior Craft</h3>
+        <p>Custom woodwork, modular kitchens, ambient false ceiling lighting, and handpicked material palettes that define elegance.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services">
+    <div class="section-title">
+      <h2>Our Specialized Services</h2>
+      <p>Comprehensive design and build solutions from concept sketch to move-in day.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">📐</div>
+        <h3>Architectural Floor Plans</h3>
+        <p>Complete 2D working drawings, structural grid layouts, and 100% Vastu-compliant residential blueprints.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🛋️</div>
+        <h3>Turnkey Interior Design</h3>
+        <p>Living rooms, modular kitchens, luxury bedrooms, wardrobes, and false ceiling designs executed with premium finishes.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎨</div>
+        <h3>3D Elevation & Walkthroughs</h3>
+        <p>High-resolution exterior front elevations and 360-degree virtual interior walkthroughs before construction begins.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🏗️</div>
+        <h3>Renovation & Remodeling</h3>
+        <p>Transforming old homes, apartments, and commercial spaces into sleek, modern, energy-efficient environments.</p>
+      </div>
+      <div class="card">
+        <div class="icon">💡</div>
+        <h3>Lighting & Acoustic Design</h3>
+        <p>Architectural mood lighting, cove lights, concealed fixtures, and acoustic treatments tailored for cozy living spaces.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📋</div>
+        <h3>Site Execution & Supervision</h3>
+        <p>Material quality checks, contractor coordination, and on-site alignment reviews ensuring design fidelity.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="section-title">
+      <h2>Start Your Dream Project</h2>
+      <p>Have a villa, apartment, or interior project in mind? Let's discuss your requirements.</p>
+    </div>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Connect With Us</h3>
+        <p><strong>Firm:</strong> KPD Enterprises</p>
+        <p><strong>Specialization:</strong> Luxury Villas, Apartments & Premium Interiors</p>
+        <p><strong>Location:</strong> Telangana & Andhra Pradesh, India</p>
+        <p><strong>Email:</strong> contact@kpdenterprises.in</p>
+        <p><strong>Phone:</strong> +91 98765 43210</p>
+        <p><strong>Hours:</strong> Mon - Sat: 9:30 AM - 7:00 PM</p>
+      </div>
+      <div class="contact-form">
+        <form onsubmit="event.preventDefault(); alert('Thank you! We will get in touch with you shortly.');">
+          <input type="text" placeholder="Your Name" required />
+          <input type="tel" placeholder="Mobile Number" required />
+          <select required>
+            <option value="">Select Project Type</option>
+            <option value="villa">Luxury Villa Construction</option>
+            <option value="interior">Apartment Interior Design</option>
+            <option value="elevation">3D Elevation & Planning</option>
+            <option value="renovation">Complete Renovation</option>
+          </select>
+          <textarea rows="4" placeholder="Tell us about your plot size, budget, or ideas..." required></textarea>
+          <button type="submit" class="btn" style="border: none; cursor: pointer; width: 100%;">Submit Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 KPD Enterprises. All Rights Reserved. | Architecture & Interior Design</p>
+  </footer>
+
+</body>
+</html>
